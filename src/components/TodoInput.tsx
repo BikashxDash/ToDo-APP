@@ -10,35 +10,31 @@ export default function TodoInput({ setTodos, setShowInput }: any) {
 
   // Function to add a new todo
   const addTodo = () => {
-    if (!text.trim()) return; // prevent empty input
+    if (!text.trim()) return;
 
-    const newTodo: Todo = {
-      id: Date.now().toString(), // simple unique id
-      text,
+    const newTodo = {
+      id: Date.now().toString(),
+      text: text.trim(),
       completed: false,
     };
 
-    // Add new todo to existing list
     setTodos((prev: Todo[]) => [...prev, newTodo]);
-
-    // Clear input and close field
     setText("");
-    setShowInput(false);
+    setShowInput(false); // input close after add
   };
 
   return (
     <div className="mb-6 max-w-md">
       <input
-        className="w-full p-3 rounded-xl bg-neutral-900 outline-none text-white placeholder-gray-500"
         value={text}
         onChange={(e) => setText(e.target.value)}
-
-        // Allow Enter key to submit
+        placeholder="Add a task..."
+        autoFocus
         onKeyDown={(e) => {
           if (e.key === "Enter") addTodo();
         }}
-
-        placeholder="Add a task..."
+        onBlur={addTodo}
+        className="..."
       />
     </div>
   );

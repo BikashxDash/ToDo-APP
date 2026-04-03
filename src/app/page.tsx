@@ -47,20 +47,20 @@ export default function Home() {
       <div className="w-full max-w-5xl px-6 pb-32">
 
         {/* 🏷️ App Title */}
-        <h1 className="text-3xl font-semibold mt-8 mb-6">TODO</h1>
+        <h1 className="text-2xl md:text-3xl font-semibold mt-6 md:mt-8 mb-4 md:mb-6">TODO</h1>
 
         {/* 📐 Layout (changes based on tab) */}
         <div
-          className={`grid gap-10 ${
+          className={`grid gap-6 ${
             activeTab === "profile"
-              ? "grid-cols-1" // Profile full width
-              : "grid-cols-[0.85fr_1.15fr]" // Calendar + Content
+              ? "grid-cols-1"
+              : "grid-cols-1 md:grid-cols-[0.85fr_1.15fr]"
           }`}
         >
 
           {/* 📅 CALENDAR (hidden in profile tab) */}
           {activeTab !== "profile" && (
-            <div className="bg-neutral-900 rounded-2xl p-4">
+            <div className="bg-neutral-900 rounded-2xl p-3 md:p-4">
 
               {/* Header */}
               <div className="flex justify-between mb-4">
@@ -110,7 +110,7 @@ export default function Home() {
               <>
                 <h2 className="text-2xl font-semibold mb-4">Tasks</h2>
 
-                <div className="max-w-sm">
+                <div className="w-full md:max-w-sm">
                   {showInput && (
                     <TodoInput
                       setTodos={setTodos}
@@ -141,7 +141,7 @@ export default function Home() {
         {activeTab === "tasks" && (
           <button
             onClick={() => setShowInput((prev) => !prev)}
-            className="fixed bottom-28 right-[calc((100vw-80rem)/2+9.5rem)] z-50 border-2 border-neutral-700 text-white rounded-full px-5 py-3 flex items-center gap-2 shadow-md hover:border-neutral-500 hover:scale-105 transition"
+            className="fixed bottom-24 right-4 md:right-[calc((100vw-80rem)/2+9.5rem)] z-50 border-2 border-neutral-700 text-white rounded-full px-5 py-3 flex items-center gap-2 shadow-md hover:border-neutral-500 hover:scale-105 transition"
           >
             <span className="text-sm">Add</span>
             <span className="text-xl">+</span>
@@ -149,7 +149,7 @@ export default function Home() {
         )}
 
         {/* 🧭 Navbar */}
-        <div className="fixed bottom-6 left-1/2 -translate-x-1/2 w-full max-w-5xl px-6">
+        <div className="fixed bottom-4 md:bottom-6 left-1/2 -translate-x-1/2 w-full max-w-5xl px-4 md:px-6">
           <Navbar activeTab={activeTab} setActiveTab={setActiveTab} />
         </div>
 
